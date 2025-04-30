@@ -7,7 +7,6 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemText,
   Divider,
   Button,
   ListItemIcon,
@@ -172,30 +171,34 @@ const NavBar = () => {
         </MenuItem>
       </Menu>
       <Drawer anchor="left" open={openBurger} onClose={toggleDrawer(false)}>
-        <Box sx={{ width: 250, height: "100%" }}>
-          <List>
+        <Box sx={{ width: 250, height: "100%", backgroundColor: "#E1F9EA" }}>
+          <List sx={{ p: 0, m: 0 }}>
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
+                height: "100%",
+                backgroundColor: "#96DFFE",
               }}
             >
-              <Button
+              <Typography
                 id="btn-title-mobile"
+                className="hover-highlight"
                 onClick={() => handleNavDrawer(views[0].nav)}
                 sx={{
                   textTransform: "initial",
                   color: "rgb(39, 30, 89)",
-                  mt: 2,
-                  mb: 2,
+                  mt: 3.5,
+                  mb: 3.5,
+                  cursor: "pointer",
                 }}
               >
                 <Typography sx={{ fontWeight: "bold" }} variant="h6">
                   Lelo Pona Lobi
                 </Typography>
-              </Button>
+              </Typography>
             </Box>
             <Divider />
             {views.map(({ text, icon, nav }, index) => (
@@ -204,8 +207,20 @@ const NavBar = () => {
                   id={`btn-nav-mobile-${index}`}
                   onClick={() => handleNavDrawer(nav)}
                 >
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <Typography sx={{ fontWeight: "bold" }} variant="body1">
+                  <ListItemIcon
+                    sx={{
+                      color: "rgb(39, 30, 89)",
+                    }}
+                  >
+                    {icon}
+                  </ListItemIcon>
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                      color: "rgb(39, 30, 89)",
+                    }}
+                    variant="body1"
+                  >
                     {text}
                   </Typography>
                 </ListItemButton>

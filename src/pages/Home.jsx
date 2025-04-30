@@ -1,15 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import HomeSection from "../assets/home.jpeg";
-import EcoleSection from "../assets/ecole.jpeg";
-import ActuSection from "../assets/montagne.jpeg";
-import DonSection from "../assets/cycle.png";
-import LoveSection from "../assets/amour.jpeg";
-import DeterSection from "../assets/deter.jpeg";
-import FamilleSection from "../assets/famille.jpeg";
-import PlanteSection from "../assets/plante.jpeg";
 import MultiActionAreaCard from "../components/CardActu";
 import { useNavigate } from "react-router-dom";
+import { SubTitle } from "../styles/Typography/SubTitle";
+import { TextBody } from "../styles/Typography/TextBody";
+import { BtnSimple } from "../styles/Button/BtnSimple";
+import HomeImg from "../assets/home.webp";
+import LoveImg from "../assets/amour.webp";
+import CycleImg from "../assets/cycle.webp";
+import MontagneImg from "../assets/montagne.webp";
+import PlanteImg from "../assets/plante.webp";
+import DeterImg from "../assets/deter.webp";
+import FamilleImg from "../assets/famille.webp";
+import EcoleImg from "../assets/ecole.webp";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100%",
           height: "100vh",
-          backgroundImage: `url(${HomeSection})`,
+          backgroundImage: `url(${HomeImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",
@@ -48,20 +50,7 @@ const Home = () => {
             px: 4,
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              color: "#FFF",
-              mb: 2,
-              textAlign: "left",
-              fontSize: {
-                xs: "24px",
-                md: "48px",
-              },
-            }}
-          >
-            Lelo pona lobi
-          </Typography>
+          <SubTitle text="Lelo pona lobi" isWhite isLeft />
           <Typography
             sx={{
               fontWeight: "bold",
@@ -76,21 +65,14 @@ const Home = () => {
           >
             L'avenir se prépare aujourd'hui
           </Typography>
-          <Typography
-            sx={{
-              color: "#FFF",
-              textAlign: "left",
-              fontSize: {
-                xs: "16px",
-                md: "20px",
-              },
-            }}
-          >
-            Lelo Pona Lobi est une promesse. Une promesse d’action, de
+          <TextBody
+            text="Lelo Pona Lobi est une promesse. Une promesse d’action, de
             solidarité, et de changement. Ce projet est porté par la conviction
             que chaque enfant a un potentiel immense et que l’éducation est la
-            clé pour le révéler.
-          </Typography>
+            clé pour le révéler."
+            isWhite
+            isLeft
+          />
         </Box>
       </Box>
       <Box
@@ -134,17 +116,16 @@ const Home = () => {
               <Box
                 component="img"
                 alt="Famille"
-                src={FamilleSection}
-                loading="lazy"
-                decoding="async"
+                src={FamilleImg}
                 width="512"
                 height="640"
                 sizes="(max-width: 512px) 100vw, 512px"
                 sx={{
-                  display: "flex",
                   borderRadius: "8px",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  display: "block",
                 }}
               />
             </Box>
@@ -158,17 +139,16 @@ const Home = () => {
               <Box
                 component="img"
                 alt="Plante"
-                src={PlanteSection}
-                loading="lazy"
-                decoding="async"
+                src={PlanteImg}
                 width="736"
                 height="728"
                 sizes="(max-width: 736px) 100vw, 736px"
                 sx={{
-                  display: "flex",
                   borderRadius: "8px",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  display: "block",
                 }}
               />
             </Box>
@@ -193,17 +173,16 @@ const Home = () => {
               <Box
                 component="img"
                 alt="Deter"
-                src={DeterSection}
-                loading="lazy"
-                decoding="async"
+                src={DeterImg}
                 width="451"
                 height="600"
                 sizes="(max-width: 451px) 100vw, 451px"
                 sx={{
-                  display: "flex",
                   borderRadius: "8px",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  display: "block",
                 }}
               />
             </Box>
@@ -217,17 +196,16 @@ const Home = () => {
               <Box
                 component="img"
                 alt="Love"
-                src={LoveSection}
-                loading="lazy"
-                decoding="async"
+                src={LoveImg}
                 width="736"
                 height="713"
                 sizes="(max-width: 736px) 100vw, 736px"
                 sx={{
-                  display: "flex",
                   borderRadius: "8px",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  display: "block",
                 }}
               />
             </Box>
@@ -245,21 +223,7 @@ const Home = () => {
             mb: { xs: 4, md: 0 },
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-              textAlign: { md: "left", xs: "center" },
-              color: "rgb(39, 30, 89)",
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "24px",
-                md: "48px",
-              },
-            }}
-          >
-            A propos de nous
-          </Typography>
+          <SubTitle text="À propos de nous" />
           <Typography
             sx={{
               textAlign: { md: "left", xs: "center" },
@@ -277,19 +241,10 @@ const Home = () => {
             opportunités et contribuer au développement économique et social de
             la RDC en réconciliant la jeunesse à son identité et son histoire.
           </Typography>
-          <Button
-            variant="contained"
-            onClick={() => navigate("/about")}
-            sx={{
-              width: "225px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              border: "1px solid rgb(39, 30, 89)",
-              backgroundColor: "#FFE084",
-            }}
-          >
-            En savoir plus
-          </Button>
+          <BtnSimple
+            text="En savoir plus"
+            handleClick={() => navigate("/about")}
+          />
         </Box>
       </Box>
       <Box
@@ -301,7 +256,7 @@ const Home = () => {
           minHeight: "100vh",
           backgroundColor: "#FFF",
           flexDirection: { xs: "column", md: "row" },
-          mb: { md: 0, xs: 4 },
+          mb: { md: -10, xs: 4 },
         }}
       >
         <Box
@@ -312,82 +267,102 @@ const Home = () => {
             height: "100%",
             justifyContent: "center",
             alignItems: { md: "center", xs: "center" },
-            gap: 4,
             mb: { xs: 4, md: 0 },
             mt: { xs: 4, md: 0 },
           }}
         >
+          <SubTitle text="L'école c'est pour toi !" />
           <Box
             sx={{
               display: "flex",
-              width: { md: "70%", xs: "100%" },
-              height: "220px",
-              backgroundColor: "#EBF8F5",
-              borderRadius: "8px",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
+              width: "100%",
+              justifyContent: "flex-start",
+              mt: 4,
+              mb: 6,
             }}
           >
-            <Typography
+            <Box
               sx={{
-                color: "#0ABD9D",
-                fontWeight: "bold",
-                width: "80%",
-                fontSize: "42px",
+                display: "flex",
+                width: { md: "70%", xs: "100%" },
+                height: "220px",
+                backgroundColor: "#EBF8F5",
+                borderRadius: "8px",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                ml: 8,
               }}
             >
-              3
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                color: "rgb(39, 30, 89)",
-                width: "80%",
-                fontSize: {
-                  xs: "24px",
-                  md: "32px",
-                },
-              }}
-            >
-              Ecoles soutenues en 2026
-            </Typography>
+              <Typography
+                sx={{
+                  color: "#0ABD9D",
+                  fontWeight: "bold",
+                  width: "80%",
+                  fontSize: "42px",
+                }}
+              >
+                3
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  color: "rgb(39, 30, 89)",
+                  width: "80%",
+                  fontSize: {
+                    xs: "24px",
+                    md: "32px",
+                  },
+                }}
+              >
+                Ecoles soutenues en 2026
+              </Typography>
+            </Box>
           </Box>
           <Box
             sx={{
               display: "flex",
-              width: { md: "70%", xs: "100%" },
-              height: "220px",
-              backgroundColor: "#EBF8F5",
-              borderRadius: "8px",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
+              width: "100%",
+              justifyContent: "flex-end",
             }}
           >
-            <Typography
+            <Box
               sx={{
-                color: "#0ABD9D",
-                fontWeight: "bold",
-                width: "80%",
-                fontSize: "42px",
+                display: "flex",
+                width: { md: "70%", xs: "100%" },
+                height: "220px",
+                backgroundColor: "#EBF8F5",
+                borderRadius: "8px",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                mr: 8,
               }}
             >
-              1000
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                color: "rgb(39, 30, 89)",
-                width: "80%",
-                fontSize: {
-                  xs: "24px",
-                  md: "28px",
-                },
-              }}
-            >
-              Elèves soutenues en 2026
-            </Typography>
+              <Typography
+                sx={{
+                  color: "#0ABD9D",
+                  fontWeight: "bold",
+                  width: "80%",
+                  fontSize: "42px",
+                }}
+              >
+                1000
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  color: "rgb(39, 30, 89)",
+                  width: "80%",
+                  fontSize: {
+                    xs: "24px",
+                    md: "28px",
+                  },
+                }}
+              >
+                Elèves soutenues en 2026
+              </Typography>
+            </Box>
           </Box>
         </Box>
         <Box
@@ -400,62 +375,29 @@ const Home = () => {
             alignItems: { md: "flex-start", xs: "center" },
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-              textAlign: { md: "left", xs: "center" },
-              color: "rgb(39, 30, 89)",
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "24px",
-                md: "28px",
-              },
-            }}
-          >
-            L'école c'est pour toi !
-          </Typography>
           <Box
             component="img"
             alt="img"
-            src={EcoleSection}
+            src={EcoleImg}
             sx={{
-              display: "flex",
               width: { xs: "100%", md: "80%" },
-              height: { xs: "25%", sm: "35%", md: "45%" },
+              height: "auto",
+              objectFit: "cover",
+              display: "block",
               borderRadius: "8px",
-              mb: 3,
+              mb: 2,
             }}
           />
-          <Typography
-            sx={{
-              textAlign: { md: "left", xs: "center" },
-              color: "rgb(39, 30, 89)",
-              mb: 6,
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "16px",
-                md: "20px",
-              },
-            }}
-          >
-            Avec « L’école c’est pour toi ! », nous souhaitons donner à chaque
+          <TextBody
+            text="Avec « L’école c’est pour toi ! », nous souhaitons donner à chaque
             enfant congolais une chance de rêver, d’apprendre et de se
             construire. Cette action se décline en plusieurs étapes, la première
-            étant de soutenir la rentrée scolaire de ses jeunes.
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              width: "225px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              border: "1px solid rgb(39, 30, 89)",
-              backgroundColor: "#FFE084",
-            }}
-          >
-            Nos actions
-          </Button>
+            étant de soutenir la rentrée scolaire de ses jeunes."
+          />
+          <BtnSimple
+            text="Nos actions"
+            handleClick={() => navigate("/actions")}
+          />
         </Box>
       </Box>
       <Box
@@ -478,36 +420,11 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-              textAlign: "center",
-              color: "rgb(39, 30, 89)",
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "24px",
-                md: "48px",
-              },
-            }}
-          >
-            Actualités
-          </Typography>
-          <Typography
-            sx={{
-              textAlign: "center",
-              color: "rgb(39, 30, 89)",
-              mb: 6,
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "16px",
-                md: "20px",
-              },
-            }}
-          >
-            Restez informés sur nos actions et nos projets en cours ! Découvrez
-            les dernières nouvelles de Lelo Pona Lobi
-          </Typography>
+          <SubTitle text="Actualités" isCenter />
+          <TextBody
+            text="Restez informés sur nos actions et nos projets en cours ! Découvrez
+            les dernières nouvelles de Lelo Pona Lobi"
+          />
         </Box>
         <Box
           sx={{
@@ -520,17 +437,17 @@ const Home = () => {
           }}
         >
           <MultiActionAreaCard
-            media={ActuSection}
+            media={MontagneImg}
             title="Campagne découverte"
             description="Retour en image de notre première campagne de sensibilisation"
           />
           <MultiActionAreaCard
-            media={ActuSection}
+            media={MontagneImg}
             title="L'école c'est pour toi !"
             description="Les coulisses du projet en exclusivité. Ne ratez aucune miette !"
           />
           <MultiActionAreaCard
-            media={ActuSection}
+            media={MontagneImg}
             title="Po lobi na bino ezala tokoss"
             description="Les origines du slogan kinois !"
           />
@@ -560,37 +477,12 @@ const Home = () => {
             mb: { md: 0, xs: 10 },
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-              textAlign: { md: "left", xs: "center" },
-              color: "rgb(39, 30, 89)",
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "24px",
-                md: "48px",
-              },
-            }}
-          >
-            Rejoignez nous dans notre mission
-          </Typography>
-          <Typography
-            sx={{
-              textAlign: { md: "left", xs: "center" },
-              color: "rgb(39, 30, 89)",
-              mb: 6,
-              width: { md: "80%", xs: "100%" },
-              fontSize: {
-                xs: "16px",
-                md: "20px",
-              },
-            }}
-          >
-            Chaque don, petit ou grand, contribue à bâtir des écoles, offrir des
+          <SubTitle text="Rejoignez nous dans notre mission" />
+          <TextBody
+            text="Chaque don, petit ou grand, contribue à bâtir des écoles, offrir des
             opportunités éducatives et redonner espoir à des milliers d’enfants
-            et de jeunes.
-          </Typography>
+            et de jeunes."
+          />
           <Button
             component="a"
             variant="contained"
@@ -603,6 +495,7 @@ const Home = () => {
               fontWeight: "bold",
               border: "1px solid rgb(39, 30, 89)",
               backgroundColor: "#FFE084",
+              color: "#000",
             }}
           >
             Faire un don
@@ -621,11 +514,12 @@ const Home = () => {
           <Box
             component="img"
             alt="img"
-            src={DonSection}
+            src={CycleImg}
             sx={{
-              display: "flex",
               width: "80%",
-              height: { xs: "40%", md: "80%" },
+              height: "auto",
+              objectFit: "cover",
+              display: "block",
               borderRadius: "8px",
               mb: 3,
             }}

@@ -1,9 +1,33 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "../styles/NavBar.css";
+import { toast } from "react-toastify";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+
+  const handleSubscribe = async () => {
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success(data.message || "Inscription réussie !");
+        setEmail("");
+      } else {
+        toast.error(data.message || "Erreur lors de l'inscription !");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Erreur réseau !");
+    }
+  };
+
   return (
     <>
       <Box
@@ -156,20 +180,6 @@ const Footer = () => {
                 },
               }}
             >
-              FAQ
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: "normal",
-                color: "rgb(39, 30, 89)",
-                textAlign: "left",
-                cursor: "pointer",
-                fontSize: {
-                  xs: "15px",
-                  md: "16px",
-                },
-              }}
-            >
               CGV
             </Typography>
             <Typography
@@ -225,12 +235,14 @@ const Footer = () => {
                 input: {
                   style: {
                     height: "40px",
+                    backgroundColor: "#FFF",
                   },
                 },
               }}
             />
             <Button
               variant="contained"
+              onClick={handleSubscribe}
               sx={{
                 width: "125px",
                 borderRadius: "8px",
@@ -239,6 +251,7 @@ const Footer = () => {
                 backgroundColor: "#FFE084",
                 padding: 0,
                 textTransform: "initial",
+                color: "#000",
               }}
             >
               S'abonner

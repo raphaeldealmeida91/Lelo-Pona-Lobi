@@ -1,12 +1,66 @@
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  IconButton,
+  TextField,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
+import { useRef, useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import TiktokIcon from "../assets/tiktok.svg";
+import emailjs from "@emailjs/browser";
+import SendIcon from "@mui/icons-material/Send";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
   const [object, setObject] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const form = useRef(null);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (!email.trim() || !object.trim() || !message.trim()) {
+      toast.error("Tous les champs sont requis !");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      toast.error("Veuillez entrer une adresse email valide !");
+      return;
+    }
+    setIsLoading(true);
+    const templateParams = {
+      email: email,
+      subject: object,
+      message: message,
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs
+      .send(
+        "service_018ud4r",
+        "template_gslom58",
+        templateParams,
+        "5l5jiKiXUsJeVb52t"
+      )
+      .then(
+        () => {
+          toast.success("Message envoyé avec succès !");
+        },
+        () => {
+          toast.error("Une erreur s'est produite. Veuillez réessayer !");
+        }
+      )
+      .finally(() => {
+        setEmail("");
+        setObject("");
+        setMessage("");
+      });
+  };
+
   return (
     <Box>
       <Box
@@ -33,7 +87,7 @@ const Contact = () => {
         <Box
           sx={{
             position: "absolute",
-            top: "6%",
+            top: "4%",
             left: "10%",
             width: "500px",
             height: "500px",
@@ -78,7 +132,7 @@ const Contact = () => {
           <Box
             component="img"
             alt="icon"
-            src={TiktokIcon}
+            src="/tiktok.svg"
             sx={{ color: "rgb(39, 30, 89)", width: "32px", height: "32px" }}
           />
         </IconButton>
@@ -108,6 +162,9 @@ const Contact = () => {
         </Box>
       </Box>
       <Box
+        component="form"
+        ref={form}
+        onSubmit={handleSendMessage}
         sx={{
           display: "flex",
           alignItems: "center",
@@ -156,15 +213,24 @@ const Contact = () => {
         />
         <Button
           variant="contained"
+          type="submit"
+          startIcon={
+            isLoading ? (
+              <CircularProgress size={20} sx={{ color: "#000" }} />
+            ) : (
+              <SendIcon sx={{ color: "#000" }} />
+            )
+          }
           sx={{
             width: "225px",
             borderRadius: "8px",
             fontWeight: "bold",
             border: "1px solid rgb(39, 30, 89)",
             backgroundColor: "#FFE084",
+            color: "#000",
           }}
         >
-          Envoyé un mail
+          {isLoading ? "Envoi en cours..." : "Envoyé un email"}
         </Button>
       </Box>
     </Box>
