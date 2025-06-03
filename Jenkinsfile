@@ -44,9 +44,8 @@ pipeline {
                     sh '''
 ssh -o StrictHostKeyChecking=no jenkins@217.154.9.84 << 'EOF'
 cd /home/jenkins/Lelo-Pona-Lobi
-git checkout master
-git rebase
-git pull --ff-only
+git fetch origin
+git reset --hard origin/master
 npm ci
 npm run build
 sudo rm -rf /var/www/html/dist/
